@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from services.mangadex_service import fetch_mangas, fetch_manga_detail
+from services.fetch_mangas import fetch_mangas
+from services.fetch_manga_detail import fetch_manga_detail
 
 router = APIRouter()
 
