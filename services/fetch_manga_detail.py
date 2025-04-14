@@ -1,5 +1,7 @@
 import httpx
 from fastapi import HTTPException
+from services.fetch_mangas import fetch_mangas
+from services.similar_manga import compute_similarity
 
 MANGADEX_API = "https://api.mangadex.org/manga"
 
@@ -40,6 +42,16 @@ async def fetch_manga_detail(manga_id: str):
         external_links = []
         if "externalLinks" in manga["attributes"]:
             external_links = [link["url"] for link in manga["attributes"]["externalLinks"]]
+        
+        # Sau khi bạn lấy được chi tiết manga    
+        all_mangas_data = await fetch_mangas(total=500)  # hoặc nhiều hơn
+        all_mangas = all_mangas_data["mangas"]
+        # Tìm manga gốc trong danh sách để so sánh
+        target_manga = next((m for m in all_mangas if m["id"] == manga_id), None)
+        if target_manga:
+            similar_mangas = compute_similarity(target_manga, all_mangas)
+        else:
+            similar_mangas = []
 
         # Trả về tất cả thông tin đã fetch
         return {
@@ -56,5 +68,6 @@ async def fetch_manga_detail(manga_id: str):
             "createdAt": created_at,
             "updatedAt": updated_at,
             "coverUrl": cover_url,
-            "externalLinks": external_links
+            "externalLinks": external_links,
+            "similar": similar_mangas
         }

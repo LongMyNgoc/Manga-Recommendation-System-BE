@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 MANGADEX_API = "https://api.mangadex.org/manga"
 
-async def fetch_mangas(total: int = 300):
+async def fetch_mangas(total: int = 500):
     limit = 100  # Số lượng tối đa cho mỗi request
     mangas = []
 
@@ -25,6 +25,8 @@ async def fetch_mangas(total: int = 300):
                 title = manga["attributes"]["title"].get("en", "No title available")
                 status = manga["attributes"].get("status", "Unknown")
                 tags = [tag["attributes"]["name"]["en"] for tag in manga["attributes"]["tags"]]
+                publication_demographic = manga["attributes"].get("publicationDemographic", "Unknown")
+                original_language = manga["attributes"].get("originalLanguage", "Unknown")
 
                 cover_rel = next((rel for rel in manga["relationships"] if rel["type"] == "cover_art"), None)
                 cover_url = (
@@ -37,7 +39,9 @@ async def fetch_mangas(total: int = 300):
                     "title": title,
                     "status": status,
                     "tags": tags,
-                    "coverUrl": cover_url
+                    "coverUrl": cover_url,
+                    "publicationDemographic": publication_demographic,
+                    "originalLanguage": original_language
                 })
 
             # Nếu số manga nhận được ít hơn limit, nghĩa là đã fetch hết
