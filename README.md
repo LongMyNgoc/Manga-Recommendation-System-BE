@@ -1,7 +1,8 @@
 # Manga Recommendation System (Back-End)
 <p align="center">
-  <img src="public/assets/Home.png" alt="Home" width="100%" style="display: block; margin-bottom: 20px;">
-  <img src="public/assets/Dashboard.png" alt="Dashboard" width="100%" style="display: block;">
+  <img src="https://github.com/LongMyNgoc/Manga-Recommendation-System/blob/main/public/assets/MangaList.png" alt="MangaList" width="100%" style="display: block; margin-bottom: 20px;">
+  <img src="https://github.com/LongMyNgoc/Manga-Recommendation-System/blob/main/public/assets/MangaDetail.png" alt="MangaDetail" width="100%" style="display: block; margin-bottom: 20px;">
+  <img src="https://github.com/LongMyNgoc/Manga-Recommendation-System/blob/main/public/assets/RecommentManga.png" alt="RecommentManga" width="100%" style="display: block;">
 </p>
 
 ## Giới Thiệu
