@@ -44,7 +44,7 @@ async def fetch_manga_detail(manga_id: str):
             external_links = [link["url"] for link in manga["attributes"]["externalLinks"]]
         
         # Sau khi bạn lấy được chi tiết manga    
-        all_mangas_data = await fetch_mangas(total=500)  # hoặc nhiều hơn
+        all_mangas_data = await fetch_mangas(total=1000)  # hoặc nhiều hơn
         all_mangas = all_mangas_data["mangas"]
         # Tìm manga gốc trong danh sách để so sánh
         target_manga = next((m for m in all_mangas if m["id"] == manga_id), None)
