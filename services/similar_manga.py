@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-def compute_similarity(target_manga, all_mangas, top_n=12):
+def compute_similarity(target_manga, all_mangas, top_n=8):
     # Gộp các đặc điểm thành một chuỗi văn bản
     def manga_to_text(manga):
         features = manga.get("tags", [])  # Lấy danh sách tags nếu có, nếu không có thì dùng danh sách rỗng

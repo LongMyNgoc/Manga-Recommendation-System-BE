@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 MANGADEX_API = "https://api.mangadex.org/manga"
 
-async def fetch_mangas(total: int = 500):
+async def fetch_mangas(total: int = 1500):
     limit = 100  # Số lượng tối đa cho mỗi request
     mangas = []
 
